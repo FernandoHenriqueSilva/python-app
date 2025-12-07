@@ -1,0 +1,32 @@
+global:
+  image:
+    repository: argoproj/argocd
+    tag: v2.6.7
+    pullPolicy: IfNotPresent  # ✅ Usará imagem local se existir!
+
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 7.0-alpine
+    pullPolicy: IfNotPresent  # ✅ Usará imagem local
+
+# Configurações de insecure
+server:
+  extraArgs:
+    - --insecure
+
+controller:
+  extraArgs:
+    - --insecure
+
+repoServer:
+  extraArgs:
+    - --insecure
+
+# Simplifique
+dex:
+  enabled: false
+
+notifications:
+  enabled: false

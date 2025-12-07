@@ -1,0 +1,34 @@
+# Versões CORRETAS que existem no Docker Hub
+global:
+  image:
+    repository: argoproj/argocd
+    tag: v2.6.7  # Versão que realmente existe no Docker Hub!
+    pullPolicy: IfNotPresent
+
+# Redis do Docker Hub oficial
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 7.0-alpine
+    pullPolicy: IfNotPresent
+
+# Desabilitar componentes problemáticos
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
+
+# Configuração básica
+server:
+  extraArgs:
+    - --insecure
+  
+repoServer:
+  extraArgs:
+    - --insecure
+
+controller:
+  args:
+    - --insecure

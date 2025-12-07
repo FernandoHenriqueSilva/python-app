@@ -1,0 +1,13 @@
+global:
+  image:
+    repository: argoproj/argocd  # Docker Hub em vez de quay.io
+    tag: v2.8.0  # Versão mais estável no Docker Hub
+
+# Desative componentes problemáticos se necessário
+notifications:
+  enabled: false
+
+# Configure para insecure se ainda tiver problemas
+server:
+  extraArgs:
+    - --insecure

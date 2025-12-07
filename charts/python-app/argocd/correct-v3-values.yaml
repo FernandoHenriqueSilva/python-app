@@ -1,0 +1,37 @@
+# Configuração para ArgoCD v3.2.1 (chart 9.1.6)
+global:
+  image:
+    tag: v3.2.1  # DEFINA A TAG AQUI!
+    # repository: quay.io/argoproj/argocd  # Já é o padrão
+  
+# Configure tudo como insecure
+server:
+  extraArgs:
+    - --insecure
+  insecure: true
+
+controller:
+  extraArgs:
+    - --insecure
+
+repoServer:
+  extraArgs:
+    - --insecure
+
+# Redis do Docker Hub (sem problemas de certificado AWS)
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 7.0-alpine
+
+# Desabilite componentes opcionais
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
+
+# Para evitar ImagePullBackOff do init container
+redisSecretInit:
+  enabled: false
